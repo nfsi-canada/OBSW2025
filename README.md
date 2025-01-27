@@ -1,25 +1,63 @@
-## 2023 Marine Seismology Workshop - OBS data processing
+## 2025 Ocean-Bottom Seismology Training Workshop
 
 
 **Instructors**: [Pascal Audet](https://www.uogeophysics.com/authors/admin/)
 
-**When**: Wednesday/Thursday, May 23/24, 2023 at 8:30 AM (ADT). 
+**When**: April 14-16, 2025, 9:00 AM to 4:00 PM (NZDT) 
 
-**Where**: Room LSC2012 in Life Sciences Centre, Dalhousie University
+**Where**: Room 5XX in Cotton building, Victoria University of Wellington
 
-**What**: This tutorial will provide hands-on experience to process broadband ocean-bottom seismic (BBOBS) data using the Automatic Tilt and Compliance Removal (ATaCR, pronounced "attacker") software. This software is designed to automate, as best as possible, the process of characterizing and removing tilt and compliance noise from vertical component BBOBS data. The tutorial will use the Python implementation of ATaCR. 
+**What**: This workshop will cover training in seismological methods and software for broadband OBS data analysis encompassing three broad themes: 1) Seismograph orientation and data cleaning, 2) Subsurface seismic velocity structure, and 3) Earthquake detection and location. The format of the workshop will include short lectures and extensive hands-on practice to process broadband ocean-bottom seismic data using various open-source Python software packages.  
 
 ---
 
-### Installing the Python version
+### List of software packages
 
-The software has been pre-installed on the computers in Room LSC2012, therefore there is no need to follow these steps. The following steps provide instructions to install the software on your personal computer.
+#### StDb
 
-ATaCR is implemented as a separate module in the open-source Python package OBStools:
+StDb is a package containing tools for building a database of station information from geophysical observatories. The code is used through command-line scripts and include several options for querying an online FDSN archive, list the content of an existing station database, merge existing databases, and manually append or edit station information (e.g., for stations not hosted on any FDSN archive). The resulting station dictionary is used in various seismic applications covered in this workshop, such as `OrientPy`, `OBStools` and `RfPy`.
 
-- Git repository: [OBStools](https://github.com/nfsi-canada/OBStools)
+- Git repository: https://github.com/schaefferaj/StDb
 
-- Documentation can be found [here](https://nfsi-canada.github.io/OBStools/)
+- Documentation: https://schaefferaj.github.io/StDb/
+
+#### OrientPy
+
+`OrientPy` is a toolbox to help determine seismometer orientation (i.e., azimuth of horizontal components) using automated or manual processing of earthquake data. These methods are particularly useful for broadband ocean-bottom seismograph (OBS) stations, but are also applicable to broadband land stations or shorter period instruments (depending on the method selected). The code uses the `StDb` package for querying and building a station database and can be used through command-line scripts.
+
+- Git repository: https://github.com/nfsi-canada/OrientPy
+
+- Documentation: https://nfsi-canada.github.io/OrientPy/
+
+#### OBStools
+
+`OBStools` is a package containing tools for processing data from broadband ocean-bottom seismograph (OBS) stations. Current functionalities include removing vertical-component noise from tilt and compliance effects, and calculating seafloor compliance. The code uses the `StDb` package for querying and building a station database and can be used through command-line scripts.
+
+- Git repository: https://github.com/nfsi-canada/OBStools
+
+- Documentation: https://nfsi-canada.github.io/OBStools/
+
+#### RfPy 
+
+`RfPy` is a software to calculate single event-station receiver functions from the spectral deconvolution technique. Methods are available to post-process the receiver function data to calculate H-k stacks, back-azimuth harmonics and common-conversion-point (CCP) imaging. The code uses the StDb package for querying and building a station database and can be used through command-line scripts.
+
+- Git repository: https://github.com/paudetseis/RfPy
+
+- Documentation: https://paudetseis.github.io/RfPy/
+
+#### Telewavesim
+
+`Telewavesim` contains Python and Fortran modules to synthesize teleseismic body-wave propagation through stacks of generally anisotropic and strictly horizontal layers using a matrix propagator approach. The code also properly models reverberations from an overlying column of water, effectively simulating recordings from ocean-bottom seismograph (OBS) stations. The code will be useful in a variety of teleseismic receiver-based studies, such as P or S receiver functions, long-period P-wave polarization, shear-wave splitting from core-refracted shear waves (i.e., SKS, SKKS), etc. It may also be used as a forward simulator in inverse methods. The main algorithm is written in Fortran with Python wrappers.
+
+- Git repository: https://github.com/paudetseis/Telewavesim
+
+- Documentation: https://paudetseis.github.io/Telewavesim/
+
+---
+
+### Installing software packages
+
+The open-source codes have been pre-installed on the workstations in Room Cotton5XX, therefore there is no need to follow these steps for those attending the workshop in person. The following steps provide instructions to install the various software packages on a personal computer.
 
 To install `obstools`, we strongly recommend installing and creating a `conda` environment (either from the [Anaconda](https://anaconda.org) distribution or [mini-conda](https://docs.conda.io/en/latest/miniconda.html)) where the code can be installed alongside its dependencies. This **significantly reduces** the potential conflicts in package versions. In a bash (or zsh) terminal, follow these steps:
 
@@ -101,5 +139,5 @@ Then type:
 >>> import obstools
 ```
 
-If nothing happens, you're good to go! If you run into a problem, let us know by [raising an issue](https://github.com/nfsi-canada/MSW2023/issues). 
+If nothing happens, you're good to go! If you run into a problem, let us know by [raising an issue](https://github.com/nfsi-canada/OBSW2025/issues). 
 
