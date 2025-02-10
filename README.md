@@ -23,7 +23,7 @@ StDb is a package containing tools for building a database of station informatio
 
 #### OrientPy
 
-`OrientPy` is a toolbox to help determine seismometer orientation (i.e., azimuth of horizontal components) using automated or manual processing of earthquake data. These methods are particularly useful for broadband ocean-bottom seismograph (OBS) stations, but are also applicable to broadband land stations or shorter period instruments (depending on the method selected). The code uses the `StDb` package for querying and building a station database and can be used through command-line scripts.
+`OrientPy` is a toolbox to help determine seismometer orientation (i.e., azimuth of horizontal components) using automated or manual processing of earthquake data. These methods are particularly useful for broadband ocean-bottom seismograph (OBS) stations, but are also applicable to broadband land stations or shorter period instruments (depending on the method selected). 
 
 - Git repository: https://github.com/nfsi-canada/OrientPy
 
@@ -31,7 +31,7 @@ StDb is a package containing tools for building a database of station informatio
 
 #### OBStools
 
-`OBStools` is a package containing tools for processing data from broadband ocean-bottom seismograph (OBS) stations. Current functionalities include removing vertical-component noise from tilt and compliance effects, and calculating seafloor compliance. The code uses the `StDb` package for querying and building a station database and can be used through command-line scripts.
+`OBStools` is a package containing tools for processing data from broadband ocean-bottom seismograph (OBS) stations. Current functionalities include removing vertical-component noise from tilt and compliance effects, and calculating seafloor compliance. 
 
 - Git repository: https://github.com/nfsi-canada/OBStools
 
@@ -39,7 +39,7 @@ StDb is a package containing tools for building a database of station informatio
 
 #### RfPy 
 
-`RfPy` is a software to calculate single event-station receiver functions from the spectral deconvolution technique. Methods are available to post-process the receiver function data to calculate H-k stacks, back-azimuth harmonics and common-conversion-point (CCP) imaging. The code uses the StDb package for querying and building a station database and can be used through command-line scripts.
+`RfPy` is a software to calculate single event-station receiver functions from the spectral deconvolution technique. Methods are available to post-process the receiver function data to calculate H-k stacks, back-azimuth harmonics and common-conversion-point (CCP) imaging. 
 
 - Git repository: https://github.com/paudetseis/RfPy
 
@@ -57,51 +57,59 @@ StDb is a package containing tools for building a database of station informatio
 
 ### Installing software packages
 
-The open-source codes have been pre-installed on the workstations in Room Cotton5XX, therefore there is no need to follow these steps for those attending the workshop in person. The following steps provide instructions to install the various software packages on a personal computer.
+The open-source codes have been pre-installed on the workstations in Room Cotton501, therefore there is no need to follow these steps for those attending the workshop in person. The following steps provide instructions to install the various software packages on a personal computer.
 
-To install `obstools`, we strongly recommend installing and creating a `conda` environment (either from the [Anaconda](https://anaconda.org) distribution or [mini-conda](https://docs.conda.io/en/latest/miniconda.html)) where the code can be installed alongside its dependencies. This **significantly reduces** the potential conflicts in package versions. In a bash (or zsh) terminal, follow these steps:
+To install the packages, we strongly recommend installing and creating a `conda` environment (either from the [Anaconda](https://anaconda.org) distribution or [mini-conda](https://docs.conda.io/en/latest/miniconda.html)) where the codes can be installed alongside their dependencies. This **significantly reduces** the potential conflicts in package versions. In a bash (or zsh) terminal, follow these steps:
 
-- Create a conda environment (here we call it `mss` for the name of the symposium) and install `python=3.8` and `obspy`:
+##### Creating a Conda environment:
+
+- Create a conda environment (here we call it `obsw25`, short for "OBS Workshop 2025") and install `python=3.10` and some required packages directly:
 
 ```bash
-conda create -n msw python=3.8 obspy -c conda-forge
+conda create -n obsw25 -c conda-forge "python=3.10" "numpy<1.22" "setuptools=60" obspy fortran-compiler
 ```
 
 - Activate the environment:
 
 ```bash
-conda activate msw
+conda activate obsw2025
 ```
 
-- Install the required [`stdb`](https://github.com/schaefferaj/StDb) package using `pip`:
+Now you're ready to install the required packages used in the workshop. You might consider one of two options: 1) you are only interested in using the software and are not interested in the source code; 2) you want to look at the source code and are considering contributing (awesome!!)
+
+##### 1) User mode: Installing from the Python Package Index (PyPI):
+
+> Note: Following this sequence exactly (with `Telewavesim` installed first) to avoid version conflicts!
 
 ```bash
+pip install telewavesim
 pip install stdb
+pip install obstools
+pip install rfpy
+pip install orientpy@git+https://github.com/nfsi-canada/orientpy
 ```
 
-Now you're ready to install `obstools`. You might consider one of two options: 1) you want to look at the source code and are considering contributing (awesome!!); 2) you are only interested in using the software and are not interested in the source code.
+##### 2) Developer mode: Cloning and installing from source
 
-##### 1) Developer mode: Installing from source
+- Navigate on the command line to a path where the software will be installed. **Note this should be different from your working directory**.
 
-- Navigate on the command line to a path where the software will be installed
-
-- Clone the OBStools repository ([fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) it first, if you are serious about contributing):
+- Clone the required repositories ([fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) them first, if you are serious about contributing):
 
 ```bash
-git clone https://github.com/paudetseis/OBStools.git
-cd OBStools
+git clone https://github.com/paudetseis/Telewavesim.git
+git clone https://github.com/nfsi-canada/OrientPy.git
+git clone https://github.com/nfsi-canada/OBStools.git
+git clone https://github.com/paudetseis/RfPy.git
 ```
 
 - Install using `pip`:
 
 ```bash
-pip install -e .
-```
-
-##### 2) User mode: Installing from the Python Package Index (PyPI):
-
-```bash
-pip install obstools
+pip install -e Telewavesim/.
+pip install stdb
+pip install -e OrientPy/.
+pip install -e OBStools/.
+pip install -e RfPy/.
 ```
 
 ### Getting the demo data
@@ -109,8 +117,8 @@ pip install obstools
 Finally, download the demo data provided on this github repository by navigating to some work folder (where the data and results of the processing will be located) and typing:
 
 ```bash
-git clone https://github.com/nfsi-canada/MSW2023.git
-cd MSW2023
+git clone https://github.com/nfsi-canada/OBSW2025.git
+cd OBSW2025
 ```
 
 The `DATA` and `EVENTS` folders should now be on your computer and you are ready to start the tutorial.
@@ -123,11 +131,10 @@ If you want to make sure everything is installed properly, make sure your conda 
 python
 ```
 
-which will produce something like:
+which will produce something like (on a MacOS):
 
 ```bash
-Python 3.8.16 (default, Feb  1 2023, 16:05:36) 
-[Clang 14.0.6 ] :: Anaconda, Inc. on darwin
+Python 3.10.16 | packaged by conda-forge | (main, Dec  5 2024, 14:12:04) [Clang 18.1.8 ] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
@@ -136,7 +143,10 @@ Then type:
 
 ```bash
 >>> import stdb
+>>> import orientpy
 >>> import obstools
+>>> import rfpy
+>>> import telewavesim
 ```
 
 If nothing happens, you're good to go! If you run into a problem, let us know by [raising an issue](https://github.com/nfsi-canada/OBSW2025/issues). 
