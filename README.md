@@ -47,11 +47,17 @@ StDb is a package containing tools for building a database of station informatio
 
 #### Telewavesim
 
-`Telewavesim` contains Python and Fortran modules to synthesize teleseismic body-wave propagation through stacks of generally anisotropic and strictly horizontal layers using a matrix propagator approach. The code also properly models reverberations from an overlying column of water, effectively simulating recordings from ocean-bottom seismograph (OBS) stations. The code will be useful in a variety of teleseismic receiver-based studies, such as P or S receiver functions, long-period P-wave polarization, shear-wave splitting from core-refracted shear waves (i.e., SKS, SKKS), etc. It may also be used as a forward simulator in inverse methods. The main algorithm is written in Fortran with Python wrappers.
+`Telewavesim` contains Python and Fortran modules to synthesize teleseismic body-wave propagation through stacks of generally anisotropic and strictly horizontal layers using a matrix propagator approach. The code also properly models reverberations from an overlying column of water, effectively simulating recordings from ocean-bottom seismograph (OBS) stations. The code can be used in a variety of teleseismic receiver-based studies, such as receiver functions, long-period P-wave polarization, shear-wave splitting from core-refracted shear waves (i.e., SKS, SKKS), etc. 
 
 - Git repository: https://github.com/paudetseis/Telewavesim
 
 - Documentation: https://paudetseis.github.io/Telewavesim/
+
+#### SeisBench
+
+`SeisBench` is an open-source python toolbox for machine learning in seismology. It provides a unified API for applying deep learning models to seismic waveforms, and for accessing and training machine learning algorithms on seismic datasets. SeisBench has been built to alleviate traditional bottlenecks when applying machine learning techniques to seismic data, in particular the steps of data preparation, collection and labelling.
+
+- Documentation: https://seisbench.readthedocs.io/en/stable/index.html
 
 ---
 
@@ -72,7 +78,7 @@ conda create -n obsw25 -c conda-forge "python=3.10" "numpy<1.22" "setuptools=60"
 - Activate the environment:
 
 ```bash
-conda activate obsw2025
+conda activate obsw25
 ```
 
 Now you're ready to install the required packages used in the workshop. You might consider one of two options: 1) you are only interested in using the software and are not interested in the source code; 2) you want to look at the source code and are considering contributing (awesome!!)
@@ -87,6 +93,8 @@ pip install stdb
 pip install obstools
 pip install rfpy
 pip install orientpy@git+https://github.com/nfsi-canada/orientpy
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install seisbench
 ```
 
 ##### 2) Developer mode: Cloning and installing from source
@@ -110,6 +118,8 @@ pip install stdb
 pip install -e OrientPy/.
 pip install -e OBStools/.
 pip install -e RfPy/.
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install seisbench
 ```
 
 ### Getting the demo data
