@@ -5,7 +5,7 @@
 
 **When**: April 14-16, 2025, 9:00 AM to 4:00 PM (NZDT) 
 
-**Where**: Room 5XX in Cotton building, Victoria University of Wellington
+**Where**: Room 501 in Cotton building, Victoria University of Wellington
 
 **What**: This workshop will cover training in seismological methods and software for broadband OBS data analysis encompassing three broad themes: 1) Seismograph orientation and data cleaning, 2) Subsurface seismic velocity structure, and 3) Earthquake detection and location. The format of the workshop will include short lectures and extensive hands-on practice to process broadband ocean-bottom seismic data using various open-source Python software packages.  
 
@@ -57,22 +57,24 @@ StDb is a package containing tools for building a database of station informatio
 
 `SeisBench` is an open-source python toolbox for machine learning in seismology. It provides a unified API for applying deep learning models to seismic waveforms, and for accessing and training machine learning algorithms on seismic datasets. SeisBench has been built to alleviate traditional bottlenecks when applying machine learning techniques to seismic data, in particular the steps of data preparation, collection and labelling.
 
+- Git repository: https://github.com/seisbench/seisbench/tree/main
+
 - Documentation: https://seisbench.readthedocs.io/en/stable/index.html
 
 ---
 
 ### Installing software packages
 
-The open-source codes have been pre-installed on the workstations in Room Cotton501, therefore there is no need to follow these steps for those attending the workshop in person. The following steps provide instructions to install the various software packages on a personal computer.
+The open-source codes have been pre-installed on the workstations in Room Cotton501, therefore there is no need to follow these steps for those attending the workshop in person. The following steps provide instructions to install the various software packages on a personal computer. *These instructions will work on a Linux or MacOS system, but have not been tested on PC systems.*
 
 To install the packages, we strongly recommend installing and creating a `conda` environment (either from the [Anaconda](https://anaconda.org) distribution or [mini-conda](https://docs.conda.io/en/latest/miniconda.html)) where the codes can be installed alongside their dependencies. This **significantly reduces** the potential conflicts in package versions. In a bash (or zsh) terminal, follow these steps:
 
 ##### Creating a Conda environment:
 
-- Create a conda environment (here we call it `obsw25`, short for "OBS Workshop 2025") and install `python=3.10` and some required packages directly:
+- Create a conda environment (here we call it `obsw25`, short for "OBS Workshop 2025") and install `python` and some required packages directly:
 
 ```bash
-conda create -n obsw25 -c conda-forge "python=3.10" "numpy<1.22" "setuptools=60" obspy fortran-compiler
+conda create -n obsw25 -c conda-forge "python=3.10" "numpy<1.22" "setuptools=60" obspy jupyter fortran-compiler
 ```
 
 - Activate the environment:
@@ -83,9 +85,9 @@ conda activate obsw25
 
 Now you're ready to install the required packages used in the workshop. You might consider one of two options: 1) you are only interested in using the software and are not interested in the source code; 2) you want to look at the source code and are considering contributing (awesome!!)
 
-##### 1) User mode: Installing from the Python Package Index (PyPI):
+##### 1) User mode: Installing wheels from the Python Package Index (PyPI):
 
-> Note: Following this sequence exactly (with `Telewavesim` installed first) to avoid version conflicts!
+> Note: Follow this sequence ***exactly*** (with `Telewavesim` installed first) to avoid version conflicts!
 
 ```bash
 pip install telewavesim
@@ -99,7 +101,7 @@ pip install seisbench
 
 ##### 2) Developer mode: Cloning and installing from source
 
-- Navigate on the command line to a path where the software will be installed. **Note this should be different from your working directory**.
+- Navigate on the command line to a path where the software packages will be installed. **Note this should be different from your working directory**.
 
 - Clone the required repositories ([fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) them first, if you are serious about contributing):
 
@@ -118,6 +120,11 @@ pip install stdb
 pip install -e OrientPy/.
 pip install -e OBStools/.
 pip install -e RfPy/.
+```
+
+- We then install `SeisBench` from PyPI (unless you want to contribute to those packages too!)
+
+```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 pip install seisbench
 ```
@@ -135,13 +142,13 @@ The `DATA` and `EVENTS` folders should now be on your computer and you are ready
 
 ### Testing your installation
 
-If you want to make sure everything is installed properly, make sure your conda environment has been activated and open a python window by typing in a terminal:
+If you want to make sure everything is installed properly, make sure your conda environment has been activated (i.e., `conda activate obsw25`) and open a python window by typing in a terminal:
 
 ```bash
 python
 ```
 
-which will produce something like (on a MacOS):
+which, on a MacOS (darwin), will produce something like:
 
 ```bash
 Python 3.10.16 | packaged by conda-forge | (main, Dec  5 2024, 14:12:04) [Clang 18.1.8 ] on darwin
@@ -152,11 +159,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 Then type:
 
 ```bash
+>>> import telewavesim
 >>> import stdb
 >>> import orientpy
 >>> import obstools
 >>> import rfpy
->>> import telewavesim
+>>> import seisbench
 ```
 
 If nothing happens, you're good to go! If you run into a problem, let us know by [raising an issue](https://github.com/nfsi-canada/OBSW2025/issues). 

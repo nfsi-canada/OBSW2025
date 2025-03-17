@@ -1,0 +1,7 @@
+.DS_Store
+__pycache__
+*.egg-info
+.ipynb*
+TUTORIAL2/BNG_RESULTS
+TUTORIAL2/DL_RESULTS
+TUTORIAL2/FN07A*
