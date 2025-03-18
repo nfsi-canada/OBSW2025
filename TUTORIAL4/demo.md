@@ -24,7 +24,11 @@ As we already determined the station orientation using OrientPy, we need to edit
 edit_stdb FN07A.pkl
 ```
 
-This will open a GUI where you can manually edit any field. *Do not change important metadata information!* However, you can edit the second to last field, with corresponds to `azcorr` and stores the orientation of the H1 component.
+This will open a GUI where you can manually edit any field. *Do not change important metadata information!* However, you can edit the second to last field, with corresponds to `azcorr` and stores the orientation of the H1 component. You can check that the database has been updated:
+
+```
+ls_stdb FN07A.pkl
+```
 
 ### Calculating receiver functions
 
