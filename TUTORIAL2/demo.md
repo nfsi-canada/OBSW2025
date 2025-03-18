@@ -66,10 +66,10 @@ The results for this method are not particularly great. We would need to tweak t
 
 #### Automated processing
 
-We wish to use the entire deployment time of station FN07A to calculate the station orientation using Rayleigh-wave polarization data. Following the previous example, since the file FN07A.pkl contains only one station, it is not necessary to specify a key. Here we use default parameters, except for the minimum earthquake magnitude that we set to 6, and the maximum earthquake depth that we set to 30 km.
+We wish to use the entire deployment time of station FN07A to calculate the station orientation using Rayleigh-wave polarization data. Following the previous example, since the file FN07A.pkl contains only one station, it is not necessary to specify a key. Here we use default parameters, except for the minimum earthquake magnitude that we set to 7 (to speed up the calculations), and the maximum earthquake depth that we set to 30 km.
 
 ```
-dl_calc --min-mag=6. --max-dep=30. FN07A.pkl
+dl_calc --min-mag=7. --max-dep=30. FN07A.pkl
 ```
 
 You will notice that a folder called DL_RESULTS/7D.FN07A/ has been created. This is where all processed files will be stored on your computer.
@@ -82,4 +82,8 @@ Now that all events have been processed, we wish to produce an average value of 
 dl_average --plot FN07A.pkl
 ```
 
-The figure displays the estimates according to the CC value.
+The figure displays the estimates according to the CC value. You can change the default CC value based on this plot to estimate the H1 orientation:
+
+```
+dl_average --plot --cc=0.75 FN07A.pkl
+```
