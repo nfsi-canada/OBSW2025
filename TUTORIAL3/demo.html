@@ -107,8 +107,8 @@
      overflow: visible;
     }
     hr {
-      background-color: #1a1a1a;
       border: none;
+      border-top: 1px solid #1a1a1a;
       height: 1px;
       margin: 1em 0;
     }
@@ -169,7 +169,7 @@
   </style>
 </head>
 <body>
-<h1 id="tutorial-2-demonstration">Tutorial 2 Demonstration</h1>
+<h1 id="tutorial-3-demonstration">Tutorial 3 Demonstration</h1>
 <p>In this demonstration we will show how to calculate and apply tilt
 and compliance corrections for station <a
 href="https://ds.iris.edu/gmap/#network=7D&amp;station=FN07A&amp;planet=earth">7D.FN07A</a>
@@ -180,17 +180,17 @@ from the Cascadia Initiative.</p>
 noise) data</h3>
 <p>We wish to download one month of data for the station FN07A for March
 2012. The various options above allow us to select the additional
-channels to use (e.g., -C 12,P for both horizontal and pressure data -
-which is the default setting). Default frequency settings for data
-pre-processing match those of the Matlab ATaCR software and can be
-ignored when calling the program. Since the file FN07A.pkl contains only
-one station, it is not necessary to specify a key. This option would be
-useful if the database contained several stations and we were only
-interested in downloading data for FN07A. In this case, we would specify
-<code>--keys=FN07A</code> or <code>--keys=7D.FN07A</code>. The only
-required options at this point are the <code>--start</code> and
-<code>--end</code> options to specify the dates for which data will be
-downloaded.</p>
+channels to use (e.g., <code>-C 12,P</code> for both horizontal and
+pressure data - which is the default setting). Default frequency
+settings for data pre-processing match those of the Matlab ATaCR
+software and can be ignored when calling the program. Since the file
+FN07A.pkl contains only one station, it is not necessary to specify a
+key. This option would be useful if the database contained several
+stations and we were only interested in downloading data for FN07A. In
+this case, we would specify <code>--keys=FN07A</code> or
+<code>--keys=7D.FN07A</code>. The only required options at this point
+are the <code>--start</code> and <code>--end</code> options to specify
+the dates for which data will be downloaded.</p>
 <p>If you change your mind about the pre-processing options, you can
 always re-run the following line with the option <code>-O</code>, which
 will overwrite the data saved to disk.</p>
@@ -217,7 +217,7 @@ figures for visualization, we can re-run the above script but now use
 the plotting options to look at one day of the month (March 04, 2012).
 In this case we need to overwrite the previous results (option
 <code>-O</code>) and specify the date of interest:</p>
-<pre><code>atacr_daily_spectra -O --figQC --figAverage --start=2012-03-04 --end=2012-03-05 FN07A.pkl &gt; logfile</code></pre>
+<pre><code>atacr_daily_spectra -O --figQC --figAverage --start=2012-03-03 --end=2012-03-04 FN07A.pkl &gt; logfile</code></pre>
 <p>The script will produce several figures, iwhich show all the raw data
 and the window classification into good and bad windows for subsequent
 analysis.</p>
@@ -293,7 +293,7 @@ disk, followed by the <code>StaNoise</code> object. The result is a
 called TF_STA/7D.FN07A/.</p>
 <p>We can produce a figure of the transfer functions by re-running the
 previous command with the options <code>-O --figTF</code>:</p>
-<pre><code>atacr_transfer_functions -O -figTF FN07A.pkl</code></pre>
+<pre><code>atacr_transfer_functions -O --figTF FN07A.pkl</code></pre>
 <h3 id="download-earthquake-data">Download earthquake data</h3>
 <p>Now we need to download the earthquake data, for which we wish to
 clean the vertical component using the transfer functions just
@@ -322,5 +322,18 @@ EVENTS/7D.FN07A/CORRECTED. To show some figures, specify the
 <p>Results are saved both as updated <code>EventStream</code> objects
 and as .SAC files that now contain the corrected vertical
 components.</p>
+<h3 id="dispersion-curves">Dispersion curves</h3>
+<p>Once the vertical waveform is corrected, we can check the result on
+Rayleigh-wave group velocity dispersion curves using a script already
+present in the folder EVENTS/7D.FN07A/. This script loads the raw
+vertical waveform and the cleaned one using the <code>ZP-12</code>
+sequence and then calculates and plots the dispersion curves.</p>
+<pre><code>python dispersion.py</code></pre>
+<p>The plot will show three curves in each plot (raw vs cleaned): 1) the
+picked dispersion curve (red), and the dispersion curves from both PREM
+and a global seismic velocity model (white dashed curves), from <a
+href="https://www.ldeo.columbia.edu/~ekstrom/Projects/SWP/GDM52.html">Ekstrom,
+2011</a>. You can select a different “cleaned” vertical waveform by
+editing the script “dispersion.py” and running it again.</p>
 </body>
 </html>

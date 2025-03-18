@@ -1,4 +1,4 @@
-# Tutorial 2 Demonstration
+# Tutorial 3 Demonstration
 
 In this demonstration we will show how to calculate and apply tilt and compliance corrections for station
 [7D.FN07A](https://ds.iris.edu/gmap/#network=7D&station=FN07A&planet=earth) from the Cascadia Initiative.
@@ -11,7 +11,7 @@ conda activate obsw25
 
 ### Download daylong (mostly noise) data
 
-We wish to download one month of data for the station FN07A for March 2012. The various options above allow us to select the additional channels to use (e.g., -C 12,P for both horizontal and pressure data - which is the default setting). Default frequency settings for data pre-processing match those of the Matlab ATaCR software and can be ignored when calling the program. Since the file FN07A.pkl contains only one station, it is not necessary to specify a key. This option would be useful if the database contained several stations and we were only interested in downloading data for FN07A. In this case, we would specify `--keys=FN07A` or `--keys=7D.FN07A`. The only required options at this point are the `--start` and `--end` options to specify the dates for which data will be downloaded.
+We wish to download one month of data for the station FN07A for March 2012. The various options above allow us to select the additional channels to use (e.g., `-C 12,P` for both horizontal and pressure data - which is the default setting). Default frequency settings for data pre-processing match those of the Matlab ATaCR software and can be ignored when calling the program. Since the file FN07A.pkl contains only one station, it is not necessary to specify a key. This option would be useful if the database contained several stations and we were only interested in downloading data for FN07A. In this case, we would specify `--keys=FN07A` or `--keys=7D.FN07A`. The only required options at this point are the `--start` and `--end` options to specify the dates for which data will be downloaded.
 
 If you change your mind about the pre-processing options, you can always re-run the following line with the option `-O`, which will overwrite the data saved to disk.
 
@@ -32,7 +32,6 @@ atacr_daily_spectra FN07A.pkl
 ```
 
 The code stores the `obstools.atacr.classes.DayNoise` objects to a newly created folder called SPECTRA/7D.FN07A/. To produce figures for visualization, we can re-run the above script but now use the plotting options to look at one day of the month (March 04, 2012). In this case we need to overwrite the previous results (option `-O`) and specify the date of interest:
-
 
 ```
 atacr_daily_spectra -O --figQC --figAverage --start=2012-03-03 --end=2012-03-04 FN07A.pkl > logfile
@@ -120,3 +119,13 @@ atacr_correct_event --figRaw --figClean FN07A.pkl
 ```
 
 Results are saved both as updated `EventStream` objects and as .SAC files that now contain the corrected vertical components.
+
+### Dispersion curves
+
+Once the vertical waveform is corrected, we can check the result on Rayleigh-wave group velocity dispersion curves using a script already present in the folder EVENTS/7D.FN07A/. This script loads the raw vertical waveform and the cleaned one using the `ZP-12` sequence and then calculates and plots the dispersion curves. 
+
+```
+python dispersion.py
+```
+
+The plot will show three curves in each plot (raw vs cleaned): 1) the picked dispersion curve (red), and the dispersion curves from both PREM and a global seismic velocity model (white dashed curves), from [Ekstrom, 2011](https://www.ldeo.columbia.edu/~ekstrom/Projects/SWP/GDM52.html). You can select a different "cleaned" vertical waveform by editing the script "dispersion.py" and running it again.
