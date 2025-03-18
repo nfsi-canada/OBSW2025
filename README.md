@@ -85,14 +85,14 @@ conda activate obsw25
 
 Now you're ready to install the required packages used in the workshop. You might consider one of two options: 1) you are only interested in using the software and are not interested in the source code; 2) you want to look at the source code and are considering contributing (awesome!!)
 
-##### 1) User mode: Installing wheels from the Python Package Index (PyPI):
+##### 1) User mode: Installing wheels from the master branch on the GitHub repositories and PyPI:
 
-> Note: Follow this sequence ***exactly*** (with `Telewavesim` installed first) to avoid version conflicts!
+> Note: Follow this sequence ***exactly*** (with `Telewavesim` installed first) to avoid version conflicts
 
 ```bash
 pip install telewavesim
 pip install stdb@git+https://github.com/schaefferaj/stdb
-pip install obstools
+pip install obstools@git+https://github.com/nfsi-canada/obstools
 pip install rfpy@git+https://github.com/paudetseis/rfpy
 pip install orientpy@git+https://github.com/nfsi-canada/orientpy
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
@@ -130,9 +130,9 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 pip install seisbench
 ```
 
-### Getting the demo data
+### Getting the workshop demonstrations and data
 
-Finally, download the demo data provided on this github repository by navigating to some work folder (where the data and results of the processing will be located) and typing:
+Finally, download the tutorials and demo data provided on this github repository by navigating to some work folder (where the data and results of the processing will be located) and typing:
 
 ```bash
 git clone https://github.com/nfsi-canada/OBSW2025.git

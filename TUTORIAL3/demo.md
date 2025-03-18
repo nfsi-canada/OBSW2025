@@ -35,7 +35,7 @@ The code stores the `obstools.atacr.classes.DayNoise` objects to a newly created
 
 
 ```
-atacr_daily_spectra -O --figQC --figAverage --start=2012-03-04 --end=2012-03-05 FN07A.pkl > logfile
+atacr_daily_spectra -O --figQC --figAverage --start=2012-03-03 --end=2012-03-04 FN07A.pkl > logfile
 ```
 
 The script will produce several figures, iwhich show all the raw data and the window classification into good and bad windows for subsequent analysis.
@@ -94,7 +94,7 @@ Note how the `DayNoise` objects are read randomly from disk, followed by the `St
 We can produce a figure of the transfer functions by re-running the previous command with the options `-O --figTF`:
 
 ```
-atacr_transfer_functions -O -figTF FN07A.pkl
+atacr_transfer_functions -O --figTF FN07A.pkl
 ```
 
 ### Download earthquake data
