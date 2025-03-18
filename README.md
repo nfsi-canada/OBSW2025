@@ -65,7 +65,9 @@ StDb is a package containing tools for building a database of station informatio
 
 ### Installing software packages
 
-The open-source codes have been pre-installed on the workstations in Room Cotton501, therefore there is no need to follow these steps for those attending the workshop in person. The following steps provide instructions to install the various software packages on a personal computer. *These instructions will work on a Linux or MacOS system, but have not been tested on PC systems.*
+The open-source codes and tutorial instructions and data have been pre-installed on the workstations in Room Cotton501, therefore there is no need to follow these steps for those attending the workshop in person. The following steps provide instructions to install the various software packages and required data on a personal computer. 
+
+> **Warning!!** These instructions will work on a Linux or MacOS system, but have not been tested on PC systems.
 
 To install the packages, we strongly recommend installing and creating a `conda` environment (either from the [Anaconda](https://anaconda.org) distribution or [mini-conda](https://docs.conda.io/en/latest/miniconda.html)) where the codes can be installed alongside their dependencies. This **significantly reduces** the potential conflicts in package versions. In a bash (or zsh) terminal, follow these steps:
 
