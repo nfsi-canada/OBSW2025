@@ -91,7 +91,7 @@ Now you're ready to install the required packages used in the workshop. You migh
 
 ```bash
 pip install telewavesim
-pip install stdb
+pip install stdb@git+https://github.com/schaefferaj/stdb
 pip install obstools
 pip install rfpy
 pip install orientpy@git+https://github.com/nfsi-canada/orientpy
@@ -107,6 +107,7 @@ pip install seisbench
 
 ```bash
 git clone https://github.com/paudetseis/Telewavesim.git
+git clone https://github.com/schaefferaj/StDb.git
 git clone https://github.com/nfsi-canada/OrientPy.git
 git clone https://github.com/nfsi-canada/OBStools.git
 git clone https://github.com/paudetseis/RfPy.git
@@ -116,7 +117,7 @@ git clone https://github.com/paudetseis/RfPy.git
 
 ```bash
 pip install -e Telewavesim/.
-pip install stdb
+pip install -e StDb/.
 pip install -e OrientPy/.
 pip install -e OBStools/.
 pip install -e RfPy/.
