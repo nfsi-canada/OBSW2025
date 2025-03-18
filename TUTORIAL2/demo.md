@@ -1,7 +1,7 @@
 # Tutorial 2 Demonstration
 
 In this demonstration we will attempt to determine the orientation of station
-7D.FN07A from the Cascadia Initiative: https://ds.iris.edu/gmap/#network=7D&station=FN07A&planet=earth
+[7D.FN07A](https://ds.iris.edu/gmap/#network=7D&station=FN07A&planet=earth) from the Cascadia Initiative: 
 
 We use this station because its orientation have been determined previously, so we can 
 calibrate our results see [here](https://obsic.whoi.edu/wp-content/uploads/sites/6/2019/05/Cascadia_Horizontal_Orientation_Report_2011-2012_14_05_02.pdf). This station was also used to calculate and model receiver functions

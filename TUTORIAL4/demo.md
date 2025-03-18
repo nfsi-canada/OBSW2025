@@ -1,7 +1,7 @@
 # Tutorial 4 Demonstration
 
 In this demonstration we will attempt to calculate receiver functions for station
-7D.FN07A from the Cascadia Initiative: https://ds.iris.edu/gmap/#network=7D&station=FN07A&planet=earth.
+[7D.FN07A](https://ds.iris.edu/gmap/#network=7D&station=FN07A&planet=earth) from the Cascadia Initiative.
 
 
 First, ensure the `Conda` environment is activated:

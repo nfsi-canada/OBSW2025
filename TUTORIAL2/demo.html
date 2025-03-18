@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>demo</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="tutorial-2-demonstration">Tutorial 2 Demonstration</h1>
+<p>In this demonstration we will attempt to determine the orientation of
+station <a
+href="https://ds.iris.edu/gmap/#network=7D&amp;station=FN07A&amp;planet=earth">7D.FN07A</a>
+from the Cascadia Initiative:</p>
+<p>We use this station because its orientation have been determined
+previously, so we can calibrate our results see <a
+href="https://obsic.whoi.edu/wp-content/uploads/sites/6/2019/05/Cascadia_Horizontal_Orientation_Report_2011-2012_14_05_02.pdf">here</a>.
+This station was also used to calculate and model receiver functions
+(Audet, GJI, 2016), so this will provide an example of an end-to-end
+workflow for this type of analysis.</p>
+<p>First, ensure the <code>Conda</code> environment is activated:</p>
+<pre><code>conda activate obsw25</code></pre>
+<h3 id="creating-the-stdb-database">Creating the StDb database</h3>
+<p>Simply type in the terminal:</p>
+<pre><code>query_fdsn_stdb -N 7D -S FN07A FN07A &gt; logfile</code></pre>
+<p>This command will extract the metadata and store it in the StDb file
+<code>FN07A.pkl</code>. You can also check the content of the
+database:</p>
+<pre><code>ls_stdb FN07A.pkl</code></pre>
+<p>Once we have the StDb file, we can run the scripts to automate the
+analysis and determine the station orientation using OrientPy.</p>
+<h4 id="bng-analysis">BNG analysis</h4>
+<h4 id="automated-processing">Automated processing</h4>
+<p>We wish to use the entire deployment time of station FN07A to
+calculate the station orientation using teleseismic P-wave data. Since
+the file FN07A.pkl contains only one station, it is not necessary to
+specify a key. This option would be useful if the database contained
+several stations and we were only interested in downloading data for
+LOBS3. In this case, we would specify <code>--keys=FN07A</code> or
+<code>--keys=7D.FN07A</code>. We could use all the default paramaters to
+do automated processing for regional events. However, since we wish to
+analyze teleseismic data, we will edit a few of them to include more
+waveform data around the predicted P-wave arrival time. We also consider
+all earthquakes between 30 and 175 degrees, as the program will
+automatically use either the P or PP waves to extract the waveforms.</p>
+<p>The parameters to edit in this case are: <code>--times=-5.,15.</code>
+to extract data from -5 to 15 seconds following P-wave arrival;
+<code>--window=60.</code> to include 60 seconds of data;
+<code>--minmax=6.</code> to limit the number of events to consider;
+<code>--mindist=30.</code> for the minimum epicentral distance for
+teleseismic P; and <code>--bp=0.04,0.1</code> to focus on the
+long-period P waves:</p>
+<pre><code>bng_calc_auto --times=-5.,15. --window=60. --bp=0.04,0.1 --min-mag=6. --min-dist=30. FN07A.pkl</code></pre>
+<p>You will notice that a folder called BNG_RESULTS/7D.FN07A/ has been
+created. This is where all processed files will be stored on your
+computer.</p>
+<h4 id="averaging">Averaging</h4>
+<p>Now that all events have been processed, we wish to produce an
+average value of station orientation. However, not all estimates have
+equal weight in the final average. In particular, Braunmiller et
+al. (2020) have shown how a combination of parameters can be used to
+exclude poorly constrained estimates to produce a more robust final
+estimate. Here we will use all default values in the script and specify
+arguments to plot and save final figures.</p>
+<pre><code>bng_average --plot --save FN07A.pkl</code></pre>
+<p>The first figure to pop up will show the various combinations of
+quality factors, highlighting the estimates that pass the selected
+(default) thresholds. The second figure displays the estimates according
+to three parameters:</p>
+<ul>
+<li>Signal-to-noise ratio (SNR)</li>
+<li>Cross-correlation coefficient (CC)</li>
+<li>Earthquake magnitude</li>
+</ul>
+<p>The results for this method are not particularly great. We would need
+to tweak the parameters to try and improve the estimate, perhaps use
+regional earthquakes, and so on. Let’s now look at the surface-wave
+analysis.</p>
+<h3 id="dl-analysis">DL analysis</h3>
+<h4 id="automated-processing-1">Automated processing</h4>
+<p>We wish to use the entire deployment time of station FN07A to
+calculate the station orientation using Rayleigh-wave polarization data.
+Following the previous example, since the file FN07A.pkl contains only
+one station, it is not necessary to specify a key. Here we use default
+parameters, except for the minimum earthquake magnitude that we set to 7
+(to speed up the calculations), and the maximum earthquake depth that we
+set to 30 km.</p>
+<pre><code>dl_calc --min-mag=7. --max-dep=30. FN07A.pkl</code></pre>
+<p>You will notice that a folder called DL_RESULTS/7D.FN07A/ has been
+created. This is where all processed files will be stored on your
+computer.</p>
+<h4 id="averaging-1">Averaging</h4>
+<p>Now that all events have been processed, we wish to produce an
+average value of station orientation. However, not all estimates have
+equal weight in the final average. In particular, Doran and Laske have
+shown how to specify a threshold cross-correlation (CC) value to exclude
+waveforms for which the CC between the radial and Hilbert-transformed
+vertical component is low. Here we use the default CC threshold of 0.8
+and produce a final plot with the estimate.</p>
+<pre><code>dl_average --plot FN07A.pkl</code></pre>
+<p>The figure displays the estimates according to the CC value. You can
+change the default CC value based on this plot to estimate the H1
+orientation:</p>
+<pre><code>dl_average --plot --cc=0.75 FN07A.pkl</code></pre>
+</body>
+</html>

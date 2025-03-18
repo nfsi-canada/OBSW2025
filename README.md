@@ -93,7 +93,7 @@ Now you're ready to install the required packages used in the workshop. You migh
 pip install telewavesim
 pip install stdb@git+https://github.com/schaefferaj/stdb
 pip install obstools
-pip install rfpy
+pip install rfpy@git+https://github.com/paudetseis/rfpy
 pip install orientpy@git+https://github.com/nfsi-canada/orientpy
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 pip install seisbench
@@ -139,7 +139,7 @@ git clone https://github.com/nfsi-canada/OBSW2025.git
 cd OBSW2025
 ```
 
-The `DATA` and `EVENTS` folders should now be on your computer and you are ready to start the tutorial.
+The `TUTORIAL[1-7]` folders should now be on your computer and you are ready to start the demonstrations.
 
 ### Testing your installation
 
