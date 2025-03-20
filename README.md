@@ -61,6 +61,10 @@ StDb is a package containing tools for building a database of station informatio
 
 - Documentation: https://seisbench.readthedocs.io/en/stable/index.html
 
+#### GaMMA
+
+
+
 ---
 
 ### Installing software packages
@@ -99,6 +103,7 @@ pip install rfpy@git+https://github.com/paudetseis/rfpy
 pip install orientpy@git+https://github.com/nfsi-canada/orientpy
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 pip install seisbench
+pip install git+https://github.com/wayneweiqiang/GaMMA.git
 ```
 
 ##### 2) Developer mode: Cloning and installing from source
