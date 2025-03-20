@@ -3,7 +3,7 @@
 
 **Instructors**: [Pascal Audet](https://www.uogeophysics.com/authors/admin/)
 
-**When**: April 14-16, 2025, 9:00 AM to 4:00 PM (NZDT) 
+**When**: April 14-16, 2025, 9:00 AM to 4:30 PM (NZST) 
 
 **Where**: Room 501 in Cotton building, Victoria University of Wellington
 
@@ -64,6 +64,9 @@ StDb is a package containing tools for building a database of station informatio
 #### GaMMA
 
 
+GaMMA is an earthquake phase associator using a Bayesian Gaussian mixture model. It is designed to work with `SeisBench` and can be used to automatically build earthquake catalogues from raw waveforms using a Deep Learning picker.
+
+- Git repository and Documentation: https://github.com/AI4EPS/GaMMA
 
 ---
 
@@ -137,6 +140,12 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 pip install seisbench
 ```
 
+- And finally, `GaMMA` from the GitHub repository
+
+```bash
+pip install git+https://github.com/wayneweiqiang/GaMMA.git
+```
+
 ### Getting the workshop demonstrations and data
 
 Finally, download the tutorials and demo data provided on this github repository by navigating to some work folder (where the data and results of the processing will be located) and typing:
@@ -173,6 +182,7 @@ Then type:
 >>> import obstools
 >>> import rfpy
 >>> import seisbench
+>>> import gamma
 ```
 
 If nothing happens, you're good to go! If you run into a problem, let us know by [raising an issue](https://github.com/nfsi-canada/OBSW2025/issues). 
