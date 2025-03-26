@@ -68,20 +68,20 @@ Now that we have our data set of receiver functions, we can plot it! There are t
 
 #### Back-azimuth panel
 
-Below we make a plot of all P receiver functions, filtered between 0.1 and 0.5 Hz, using 36 back-azimuth bins. We select RFs for which the raw waveform SNR is greater than 8 dB measured on the vertical component. We plot the RFs from -2. to +20 seconds following the zero-lag (i.e., P-wave arrival) time, stack all traces to produce an averaged RF, and normalize all traces to that of the stacks.
+Below we make a plot of all P receiver functions, filtered between 0.1 and 0.5 Hz, using 72 back-azimuth bins. We select RFs for which the raw waveform SNR is greater than 8 dB measured on the vertical component. We plot the RFs from 0. to +20 seconds following the zero-lag (i.e., P-wave arrival) time, stack all traces to produce an averaged RF, and normalize all traces to that of the stacks.
 
 ```
-rfpy_plot --snr=8 --bp=0.1,0.5 --nbaz=36 --normalize --trange=-2.,20. FN07A.pkl
+rfpy_plot --snr=5 --bp=0.1,0.5 --nbaz=72 --normalize --stacked --trange=0.,20. FN07A.pkl
 ```
 
-This reproduces Figure 10b in Audet (2016). 
+This approximately reproduces Figure 10b in Audet (2016). Small details may differ due to the use of different window lengths and pre-processing, etc.
 
 #### Slowness panel
 
-Now let’s make a plot of all P receiver functions, this time sorted by slowness using 20 bins. Instead
+Now let’s make a plot of all P receiver functions, this time sorted by slowness using 40 bins. 
 
 ```
-rfpy_plot --snr=8 --bp=0.1,0.5 --nslow=20 --normalize --trange=-2.,20. FN07A.pkl
+rfpy_plot --snr=5 --bp=0.1,0.5 --nslow=40 --normalize --stacked --trange=0.,20. FN07A.pkl
 ```
 
 
