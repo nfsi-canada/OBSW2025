@@ -1,11 +1,11 @@
 ## 2025 Ocean-Bottom Seismology Training Workshop
 
 
-**Instructors**: [Pascal Audet](https://www.uogeophysics.com/authors/admin/)
+**Instructor**: [Pascal Audet](https://www.uogeophysics.com/authors/admin/)
 
 **When**: April 14-16, 2025, 9:00 AM to 4:30 PM (NZST) 
 
-**Where**: Room 501 in Cotton building, Victoria University of Wellington
+**Where**: Room 501 in the Cotton building, Victoria University of Wellington
 
 **What**: This workshop will cover training in seismological methods and software for broadband OBS data analysis encompassing three broad themes: 1) Seismograph orientation and data cleaning, 2) Subsurface seismic velocity structure, and 3) Earthquake detection and location. The format of the workshop will include short lectures and extensive hands-on practice to process broadband ocean-bottom seismic data using various open-source Python software packages.  
 
@@ -72,9 +72,9 @@ GaMMA is an earthquake phase associator using a Bayesian Gaussian mixture model.
 
 ### Installing software packages
 
-The open-source codes and tutorial instructions and data have been pre-installed on the workstations in Room Cotton501, therefore there is no need to follow these steps for those attending the workshop in person. The following steps provide instructions to install the various software packages and required data on a personal computer. 
+The open-source codes and tutorial instructions and data have been pre-installed on the workstations in Room Cotton 501, therefore there is no need to follow these steps for those attending the workshop in person. The following steps provide instructions to install the various software packages and required data on a personal computer. 
 
-> **Warning!!** These instructions will work on a Linux or MacOS system, but have not been tested on PC systems.
+> **Warning!!** These instructions will work on a Linux or MacOS system, but have not been tested on Windows systems. We will not be able to troubleshoot installation problems on a personal computer during the workshop.
 
 To install the packages, we strongly recommend installing and creating a `conda` environment (either from the [Anaconda](https://anaconda.org) distribution or [mini-conda](https://docs.conda.io/en/latest/miniconda.html)) where the codes can be installed alongside their dependencies. This **significantly reduces** the potential conflicts in package versions. In a bash (or zsh) terminal, follow these steps:
 
@@ -83,7 +83,7 @@ To install the packages, we strongly recommend installing and creating a `conda`
 - Create a conda environment (here we call it `obsw25`, short for "OBS Workshop 2025") and install `python` and some required packages directly:
 
 ```bash
-conda create -n obsw25 -c conda-forge "python=3.10" "numpy<1.22" "setuptools=60" obspy jupyter fortran-compiler
+conda create -n obsw25 -c conda-forge "python=3.10" "numpy<1.22" "setuptools=60" obspy jupyter fortran-compiler spectrum
 ```
 
 - Activate the environment:
@@ -146,20 +146,20 @@ pip install seisbench
 pip install git+https://github.com/wayneweiqiang/GaMMA.git
 ```
 
-### Getting the workshop demonstrations and data
+### Getting the workshop material and data
 
-Finally, download the tutorials and demo data provided on this github repository by navigating to some work folder (where the data and results of the processing will be located) and typing:
+Finally, download the tutorials and demo data provided on this repository by navigating to some work folder (where the data and results of the processing will be located) and typing:
 
 ```bash
 git clone https://github.com/nfsi-canada/OBSW2025.git
 cd OBSW2025
 ```
 
-The `TUTORIAL[1-7]` folders should now be on your computer and you are ready to start the demonstrations.
+The `TUTORIAL[1-6]` folders should now be on your computer and you are ready to start the demonstrations.
 
 ### Testing your installation
 
-If you want to make sure everything is installed properly, make sure your conda environment has been activated (i.e., `conda activate obsw25`) and open a python window by typing in a terminal:
+If you want to make sure everything is installed properly, activate your conda environment (i.e., `conda activate obsw25`) and open a python window by typing in a terminal:
 
 ```bash
 python
