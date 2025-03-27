@@ -68,6 +68,14 @@ GaMMA is an earthquake phase associator using a Bayesian Gaussian mixture model.
 
 - Git repository and Documentation: https://github.com/AI4EPS/GaMMA
 
+#### PyOcto
+
+PyOcto is a high-throughput seismic phase associator using the octotree structure for parameter search. It is designed to work with `SeisBench` and can be used to automatically build earthquake catalogues from raw waveforms using a Deep Learning picker.
+
+- Git repository: https://github.com/yetinam/pyocto
+
+- Documentation: https://pyocto.readthedocs.io/en/latest/
+
 ---
 
 ### Installing software packages
@@ -107,6 +115,7 @@ pip install orientpy@git+https://github.com/nfsi-canada/orientpy
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 pip install seisbench
 pip install git+https://github.com/wayneweiqiang/GaMMA.git
+pip install pyocto
 ```
 
 ##### 2) Developer mode: Cloning and installing from source
@@ -140,10 +149,11 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 pip install seisbench
 ```
 
-- And finally, `GaMMA` from the GitHub repository
+- And finally, `GaMMA` from the GitHub repository and `PyOcto` from PyPI
 
 ```bash
 pip install git+https://github.com/wayneweiqiang/GaMMA.git
+pip install pyocto
 ```
 
 ### Getting the workshop material and data
