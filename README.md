@@ -193,6 +193,7 @@ Then type:
 >>> import rfpy
 >>> import seisbench
 >>> import gamma
+>>> import pyocto
 ```
 
 If nothing happens, you're good to go! If you run into a problem, let us know by [raising an issue](https://github.com/nfsi-canada/OBSW2025/issues). 
