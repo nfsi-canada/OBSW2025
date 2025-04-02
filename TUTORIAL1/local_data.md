@@ -61,7 +61,7 @@ SDS/
   2023/ (and 2024/ 2025/)
     3O/
       EL23A/ (and other stations)
-        CH1.D/ (and CH2.D/ CH3/D)
+        CH1.D/ (and CH2.D/ CH3.D/)
           3O.EL23A..CH1.D.2023.332
           ...
 ```
