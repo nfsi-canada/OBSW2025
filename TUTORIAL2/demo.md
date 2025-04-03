@@ -32,6 +32,12 @@ ls_stdb FN07A.pkl
 Once we have the StDb file, we can run the scripts to automate the analysis and determine the station
 orientation using OrientPy.
 
+> *Local data users*
+> For those working on local data sets, use the `--server=` option, for example:
+> ```
+> query_fdsn_stdb --server='http://seiscomp.geo.vuw.ac.nz' -N 3O -S EL23A -C 'CH*' EL23A
+> ```
+
 #### BNG analysis
 
 #### Automated processing
