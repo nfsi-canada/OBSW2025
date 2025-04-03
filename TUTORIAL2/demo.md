@@ -33,9 +33,10 @@ Once we have the StDb file, we can run the scripts to automate the analysis and 
 orientation using OrientPy.
 
 > *Local data users*
-> For those working on local data sets, use the `--server=` option, for example:
+>
+> For those working on data sets located on the local server, use the `--server=` option, for example:
 > ```
-> query_fdsn_stdb --server='http://seiscomp.geo.vuw.ac.nz' -N 3O -S EL23A -C 'CH*' EL23A
+> query_fdsn_stdb --server=http://seiscomp.geo.vuw.ac.nz -N 3O -S EL23A -C 'CH*' EL23A
 > ```
 
 #### BNG analysis
@@ -51,6 +52,13 @@ bng_calc_auto --times=-5.,15. --window=60. --bp=0.04,0.1 --min-mag=6. --min-dist
 ```
 
 You will notice that a folder called BNG_RESULTS/7D.FN07A/ has been created. This is where all processed files will be stored on your computer.
+
+> *Local data users*
+>
+> Use the `--server-wf=` option to get waveform data. For the NFSI data that contain 1,2,3 components, use the `-zcomp=3` option. For example,
+> ```
+> bng_calc_auto --server-wf=http://seiscomp.geo.vuw.ac.nz --times=-5.,15. --window=60. --bp=0.04,0.1 --min-mag=6. --min-dist=30. -zcomp=3 EL23A.pkl
+> ```
 
 #### Averaging
 
