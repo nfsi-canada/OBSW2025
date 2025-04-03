@@ -122,13 +122,12 @@ atacr_download_event --min-mag=6.3 --max-mag=6.7 --start=2012-03-08 --end=2012-0
 
 The data are stored as an `EventStream` object, saved to disk in the newly created folder EVENTS/7D.FN07A/.
 
-> <span style="color:blue">**Local data**
+> **Local data**
 >
 > Once again, to use the ELVES data, we need to specify a few more options. First, use the `--server=` and `--user-auth` options to get waveform data. Second, use the `-zcomp=3` option. Finally, we don't have a pressure channel, so we specify `--channels='12'` to perform tilt corrections only. For example,
 > ```
 > atacr_download_event --server=http://seiscomp.geo.vuw.ac.nz --user-auth='xxxx:xxxx' --min-mag=6.5 --max-mag=8.0 --start=2024-01-08 --end=2024-01-10 --zcomp='3' --channels='12' --sampling-rate=1. EL23A.pkl
 > ```
-</span>
 
 ### Correct/clean earthquake data
 

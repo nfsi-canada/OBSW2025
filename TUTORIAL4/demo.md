@@ -10,6 +10,12 @@ First, ensure the `Conda` environment is activated:
 conda activate obsw25
 ```
 
+Then, copy the StDb file `FN07A.pkl` from TUTORIAL2/ to TUTORIAL4/
+
+```
+cp ../TUTORIAL2/FN07A.pkl .
+```
+
 ### Creating and editing the StDb database
 
 Simply type in the terminal:
