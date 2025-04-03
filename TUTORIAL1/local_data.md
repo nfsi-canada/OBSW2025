@@ -39,7 +39,7 @@ client = Client(base_url='http://localhost:8080')
 client.get_stations(...)
 ```
 
-Installing and running `SeisComP` is not an easy task. Fortunately, `SeisComP` will be installed on one of the geophysics servers in room CO-501, such that anyone with properly formatted seismic data will be able to load it into `SeisComP` and use the FDSN web services for their data set.
+`SeisComP` is already installed on one of the geophysics servers in room CO-501, such that anyone with properly formatted seismic data will be able to load it into `SeisComP` and use the FDSN web services for their data set.
 
 ### Formatting the seismic data archive
 
@@ -92,7 +92,7 @@ If you are not sure of your setup, please send us a smaller copy (subset of data
 
 ### Working with ELVES data
 
-The ELVES data will be available via an FDSN web service set up for the workshop through SeisComP. To access the data, you will need to be connected to the local domain (geo.vuw.ac.nz) and use the full URL that points to the SeisComP server, as well as a user name and password. In a Python environment, you can access the ELVES data using the `ObsPy` tools by specifying
+The ELVES data will be available via an FDSN web service set up for the workshop through `SeisComP`. To access the data, you will need to be connected to the local domain (geo.vuw.ac.nz) and use the full URL that points to the `SeisComP` server, as well as a user name and password. In a Python environment, you can access the ELVES data using the `ObsPy` tools by specifying
 
 ```
 client = Client(base_url='http://seiscomp.geo.vuw.ac.nz', user='xxxx', password='xxxx')
