@@ -19,7 +19,7 @@ conda activate obsw25
 Simply type in the terminal:
 
 ```
-query_fdsn_stdb -N 7D -S FN07A FN07A > logfile
+query_fdsn_stdb -N 7D -S FN07A FN07A
 ```
 
 This command will extract the metadata and store it in the StDb file `FN07A.pkl`. You can also
@@ -32,7 +32,7 @@ ls_stdb FN07A.pkl
 Once we have the StDb file, we can run the scripts to automate the analysis and determine the station
 orientation using OrientPy.
 
-> *Local data users*
+> **Local data**
 >
 > For those working on data sets located on the local server, use the `--server=` option, for example:
 > ```
@@ -43,7 +43,7 @@ orientation using OrientPy.
 
 #### Automated processing
 
-We wish to use the entire deployment time of station FN07A to calculate the station orientation using teleseismic P-wave data. Since the file FN07A.pkl contains only one station, it is not necessary to specify a key. This option would be useful if the database contained several stations and we were only interested in downloading data for LOBS3. In this case, we would specify `--keys=FN07A` or `--keys=7D.FN07A`. We could use all the default paramaters to do automated processing for regional events. However, since we wish to analyze teleseismic data, we will edit a few of them to include more waveform data around the predicted P-wave arrival time. We also consider all earthquakes between 30 and 175 degrees, as the program will automatically use either the P or PP waves to extract the waveforms.
+We wish to use the entire deployment time of station FN07A to calculate the station orientation using teleseismic P-wave data. Since the file FN07A.pkl contains only one station, it is not necessary to specify a key. This option would be useful if the database contained several stations and we were only interested in downloading data for LOBS3. In this case, we would specify `--keys=FN07A` or `--keys=7D.FN07A`. We could use all the default parameters to do automated processing for regional events. However, since we wish to analyze teleseismic data, we will edit a few of them to include more waveform data around the predicted P-wave arrival time. We also consider all earthquakes between 30 and 175 degrees, as the program will automatically use either the P or PP waves to extract the waveforms.
 
 The parameters to edit in this case are: `--times=-5.,15.` to extract data from -5 to 15 seconds following P-wave arrival; `--window=60.` to include 60 seconds of data; `--minmax=6.` to limit the number of events to consider; `--mindist=30.` for the minimum epicentral distance for teleseismic P; and `--bp=0.04,0.1` to focus on the long-period P waves:
 
@@ -53,11 +53,11 @@ bng_calc_auto --times=-5.,15. --window=60. --bp=0.04,0.1 --min-mag=6. --min-dist
 
 You will notice that a folder called BNG_RESULTS/7D.FN07A/ has been created. This is where all processed files will be stored on your computer.
 
-> *Local data users*
+> **Local data**
 >
 > Use the `--server-wf=` option to get waveform data. For the NFSI data that contain 1,2,3 components, use the `-zcomp=3` option. For example,
 > ```
-> bng_calc_auto --server-wf=http://seiscomp.geo.vuw.ac.nz --times=-5.,15. --window=60. --bp=0.04,0.1 --min-mag=6. --min-dist=30. -zcomp=3 EL23A.pkl
+> bng_calc_auto --server-wf=http://seiscomp.geo.vuw.ac.nz --user-auth='guest:guest' --times=-5.,15. --window=60. --bp=0.04,0.1 --min-mag=6. --min-dist=30. --zcomp=3 EL23A.pkl
 > ```
 
 #### Averaging
@@ -87,6 +87,13 @@ dl_calc --min-mag=7. --max-dep=30. FN07A.pkl
 ```
 
 You will notice that a folder called DL_RESULTS/7D.FN07A/ has been created. This is where all processed files will be stored on your computer.
+
+> **Local data**
+>
+> Use the `--server-wf=` option to get waveform data. For the NFSI data that contain 1,2,3 components, use the `-zcomp=3` option. For example,
+> ```
+> dl_calc --server-wf=http://seiscomp.geo.vuw.ac.nz --user-auth='guest:guest' --min-mag=7. --max-dep=30. --zcomp=3 EL23A.pkl
+> ```
 
 #### Averaging
 

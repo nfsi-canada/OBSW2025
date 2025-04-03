@@ -74,12 +74,11 @@ SDS/
           ...
 ```
 
-Note, the filename does not include the extension `.mseed`, and the character `.D` that appears in both the channel code and the filename. Note also the two dots (`..`). If there is a location code, it should appear between those dots (e.g., for a location code `10`, the corresponding filename should be `3O.EL23A.10.CH1.D.2023.332`). For the ELVES data, there is no location code and this field is simply absent from the filenames.
-
+Note, the filename does not include the extension `.mseed`, and the characters `.D` that appear in both the channel code and the filename. Note also the two dots (`..`). If there is a location code, it should appear between those dots (e.g., for a location code `10`, the corresponding filename should be `3O.EL23A.10.CH1.D.2023.332`). There is no location code for the ELVES data, and this field is simply absent from the filenames. Finally, the day-of-year (DOY) field must be zero-padded to be exactly 3 characters.
 
 ### Bringing data to the OBS workshop
 
-If you wish to work on your own data set at the workshop, you will need to bring, on a single drive:
+If you wish to work on your own data set at the workshop, you will need to bring, on a single drive (or share via secure file transfer):
 
 ```
 drive/
@@ -89,3 +88,16 @@ drive/
 ```
 
 If you are not sure of your setup, please send us a smaller copy (subset of data) as soon as possible so we can test it before the workshop. 
+
+
+### Working with ELVES data
+
+The ELVES data will be available via an FDSN web service set up for the workshop through SeisComP. To access the data, you will need to be connected to the local domain (geo.vuw.ac.nz) and use the full URL that points to the SeisComP server, as well as a user name and password. In a Python environment, you can access the ELVES data using the `ObsPy` tools by specifying
+
+```
+client = Client(base_url='http://seiscomp.geo.vuw.ac.nz', user='guest', password='guest')
+client.get_stations(...)
+client.get_waveforms(...)
+```
+
+For most of the codes we will use during the workshop, you will be able to define the URL as well as the authentication fields using command-line options `--server='http://seiscomp.geo.vuw.ac.nz'` and `--user-auth='guest:guest'`. We will provide examples in the tutorials.
