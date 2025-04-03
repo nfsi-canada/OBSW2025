@@ -8,14 +8,14 @@ from obspy.clients.fdsn import Client
 client = Client('IRIS')
 ```
 
-In `ObsPy`, one can either specify a key string that points to a public archive, one use the corresponding URL. For instance, the two "clients" below are identical and point to the same archive:
+In `ObsPy`, one can either specify a key string that points to a public archive or use the corresponding URL. For instance, the two "clients" below are identical and point to the same archive:
 
 ```
 client1 = Client('GEONET')
 client2 = Client('http://service.geonet.org.nz')
 ```
 
-To be more specific, I encourage you to use the appropriate `base_url` keyword argument when defining a "client":
+To be more specific, I encourage you to use the appropriate `base_url` keyword argument when defining a "client", which makes it explicit:
 
 ```
 client = Client(base_url='http://service.geonet.org.nz')
@@ -31,7 +31,7 @@ stream = client.get_waveforms(...)
 
 ### FDSN web services for local data with `SeisComP`
 
-Oftentimes, the dataset we wish to use is not available publicly and only exists on a local (maybe external) computer drive. Due to the many different ways the data can be formatted and sorted, adapting the codes to be as flexible as possible is a huge task. Instead, it is possible to (re)format the data in a structured way that is coherent with the way FDSN services access the data on remote archives, and run `SeisComP` locally to enable FDSN web services on the same computer on a local port (e.g., http://localhost:8080), such that we can use the usual `ObsPy` "client":
+Oftentimes, the dataset we wish to use is not available publicly and only exists on a local (maybe external) computer drive. Due to the many different ways the data can be formatted and sorted, adapting every codes to be as flexible as possible is a huge task. Instead, it is possible to (re)format the data in a structured way that is coherent with the way FDSN services access the data on remote archives, and run `SeisComP` locally to enable FDSN web services on the same computer on a local port (e.g., http://localhost:8080), such that we can use the usual `ObsPy` "client":
 
 ```
 client = Client(base_url='http://localhost:8080')
@@ -39,11 +39,19 @@ client = Client(base_url='http://localhost:8080')
 client.get_stations(...)
 ```
 
-Installing and running `SeisComP` is not an easy task. Fortunately, `SeisComP` will be installed on one of the geophysics servers in room CO-501, such that anyone with properly formatted seismic data will be able to load it into `SeisComP` and use the FDSN web services.
+Installing and running `SeisComP` is not an easy task. Fortunately, `SeisComP` will be installed on one of the geophysics servers in room CO-501, such that anyone with properly formatted seismic data will be able to load it into `SeisComP` and use the FDSN web services for their data set.
 
 ### Formatting the seismic data archive
 
-To enable the FDSN web services and load local data sets, `SeisComP` uses the station XML standard for station metadata and the "SeisComP Data Structure" (SDS) for archiving miniSEED waveform data. The SDS has the structure:
+To enable the FDSN web services and load local data sets, `SeisComP` uses the station XML standard for station metadata and the "SeisComP Data Structure" (SDS) for archiving miniSEED waveform data. 
+
+#### Station XML
+
+The metadata should be formatted as a [stationXML](https://www.fdsn.org/xml/station/). The corresponding `ObsPy` documentation is [here](https://docs.obspy.org/packages/obspy.core.inventory.html). If you don't have a station `.xml` file but you have a dataless SEED file, you can convert it to `.xml` using [this tools](https://seiscode.iris.washington.edu/projects/stationxml-converter).
+
+#### Waveform (`.mseed`) data
+
+The SDS folder containing the waveform data has the structure:
 
 ```
 archive
@@ -58,17 +66,16 @@ For the ELVES data, this is, for example:
 
 ```
 SDS/
-  2023/ (and 2024/ 2025/)
+  2023/ (+ 2024/ 2025/)
     3O/
-      EL23A/ (and other stations)
-        CH1.D/ (and CH2.D/ CH3.D/)
+      EL23A/ (+ EL23B/ EL23C/ ...)
+        CH1.D/ (+ CH2.D/ CH3.D/)
           3O.EL23A..CH1.D.2023.332
           ...
 ```
 
 Note, the filename does not include the extension `.mseed`, and the character `.D` that appears in both the channel code and the filename. Note also the two dots (`..`). If there is a location code, it should appear between those dots (e.g., for a location code `10`, the corresponding filename should be `3O.EL23A.10.CH1.D.2023.332`). For the ELVES data, there is no location code and this field is simply absent from the filenames.
 
-The metadata should be formatted as a [stationXML](https://www.fdsn.org/xml/station/). The corresponding `ObsPy` documentation is [here](https://docs.obspy.org/packages/obspy.core.inventory.html). If you don't have a station `.xml` file but you have a dataless SEED file, you can convert it to `.xml` using [this tools](https://seiscode.iris.washington.edu/projects/stationxml-converter).
 
 ### Bringing data to the OBS workshop
 
@@ -81,4 +88,4 @@ drive/
     ...
 ```
 
-If you are not sure of your setup, please send us a copy as soon as possible so we can test it before the workshop. 
+If you are not sure of your setup, please send us a smaller copy (subset of data) as soon as possible so we can test it before the workshop. 
