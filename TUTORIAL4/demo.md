@@ -16,15 +16,9 @@ Then, copy the StDb file `FN07A.pkl` from TUTORIAL2/ to TUTORIAL4/
 cp ../TUTORIAL2/FN07A.pkl .
 ```
 
-### Creating and editing the StDb database
+### Editing the StDb database
 
-Simply type in the terminal:
-
-```
-query_fdsn_stdb -N 7D -S FN07A FN07A > logfile
-```
-
-As we already determined the station orientation using OrientPy, we need to edit the station file using one of the `StDb` scripts:
+As we already determined the station orientation using OrientPy, we need to edit the station file using one of the `StDb` scripts to specify the azimuth of the H1 component:
 
 ```
 edit_stdb FN07A.pkl
@@ -43,6 +37,13 @@ The script to calculate receiver functions is called `rfpy_calc`. By default, th
 ```
 rfpy_calc --minmag=5.8 FN07A.pkl
 ```
+
+> **Local data**
+>
+> To use the ELVES data, we need to specify a few more options. First, use the `--server` and `--user-auth` options to get waveform data. Second, use the `-zcomp=3` option. For example,
+> ```
+> rfpy_calc --server=http://seiscomp.geo.vuw.ac.nz --user-auth='xxxx:xxxx' --zcomp='3' --minmag=5.8 EL23A.pkl
+> ```
 
 Note that we could use a different deconvolution method (e.g., `method=multitaper`), select a shorter time range for the analysis, or align the waveforms along a different coordinate system (e.g., `LQT`, `PVH`). However, for OBS data, we prefer to use the `ZRT` alignment to avoid artifacts produced by shallow low-velocity sediments, and the Wiener deconvolution method.
 
