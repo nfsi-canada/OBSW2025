@@ -95,9 +95,9 @@ If you are not sure of your setup, please send us a smaller copy (subset of data
 The ELVES data will be available via an FDSN web service set up for the workshop through SeisComP. To access the data, you will need to be connected to the local domain (geo.vuw.ac.nz) and use the full URL that points to the SeisComP server, as well as a user name and password. In a Python environment, you can access the ELVES data using the `ObsPy` tools by specifying
 
 ```
-client = Client(base_url='http://seiscomp.geo.vuw.ac.nz', user='guest', password='guest')
+client = Client(base_url='http://seiscomp.geo.vuw.ac.nz', user='xxxx', password='xxxx')
 client.get_stations(...)
 client.get_waveforms(...)
 ```
 
-For most of the codes we will use during the workshop, you will be able to define the URL as well as the authentication fields using command-line options `--server='http://seiscomp.geo.vuw.ac.nz'` and `--user-auth='guest:guest'`. We will provide examples in the tutorials.
+For most of the codes we will use during the workshop, you will be able to define the URL as well as the authentication fields using command-line options `--server='http://seiscomp.geo.vuw.ac.nz'` and `--user-auth='xxxx:xxxx'`. We will provide username and password information and examples during the workshop.

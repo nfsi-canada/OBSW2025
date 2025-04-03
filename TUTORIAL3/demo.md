@@ -9,19 +9,32 @@ First, ensure the `Conda` environment is activated:
 conda activate obsw25
 ```
 
+Then, copy the StDb file `FN07A.pkl` from TUTORIAL2/ to TUTORIAL3/
+
+```
+cp ../TUTORIAL2/FN07A.pkl .
+```
+
 ### Download daylong (mostly noise) data
 
 We wish to download one month of data for the station FN07A for March 2012. The various options above allow us to select the additional channels to use (e.g., `-C 12,P` for both horizontal and pressure data - which is the default setting). Default frequency settings for data pre-processing match those of the Matlab ATaCR software and can be ignored when calling the program. Since the file FN07A.pkl contains only one station, it is not necessary to specify a key. This option would be useful if the database contained several stations and we were only interested in downloading data for FN07A. In this case, we would specify `--keys=FN07A` or `--keys=7D.FN07A`. The only required options at this point are the `--start` and `--end` options to specify the dates for which data will be downloaded.
 
 If you change your mind about the pre-processing options, you can always re-run the following line with the option `-O`, which will overwrite the data saved to disk.
 
-To download all broadband seismic and pressure data, simply type in a terminal:
+To download all broadband seismic and pressure data, perform pre-processing (including downsampling to 1 Hz) and save them to disk, simply type in a terminal:
 
 ```
-atacr_download_data --start=2012-03-01 --end=2012-04-01 FN07A.pkl
+atacr_download_data --start=2012-03-01 --end=2012-04-01 --sampling-rate=1. FN07A.pkl
 ```
 
 Once this is done, you will notice that a folder called DATA/7D.FN07A/ has been created. This is where all day-long files will be stored on your computer.
+
+> **Local data**
+>
+> To use the ELVES data, we need to specify a few more options. First, use the `--server` and `--user-auth` options to get waveform data. Second, use the `-zcomp=3` option. Finally, we don't have a pressure channel, so we specify `--channels='12'` to perform tilt corrections only. For example,
+> ```
+> atacr_download_data --server=http://seiscomp.geo.vuw.ac.nz --user-auth='xxxx:xxxx' --start=2024-01-01 --end=2024-01-10 --zcomp='3' --channels='12' --sampling-rate=1. EL23A.pkl
+> ```
 
 ### QC for daily spectral averages
 
@@ -49,11 +62,10 @@ atacr_clean_spectra --figQC --figAverage --figCoh --figCross FN07A.pkl
 
  All `DayNoise` objects are averaged into a `StaNoise` object, which is saved to a newly created folder called AVG_STA/7D.FN07A/.
 
-> Note: If you don’t specify the options `--start` and `--end`, the object will be saved with a filename that corresponds to the entire deployment time of the station, but in fact the object contains the average spectra of all daily spectra available on disk, and not necessarily the average over the entire deployment time. We recommend using the `--start` and `--end` options if you want to produce time-limited spectral averages (e.g., an average per week or per month, etc.). For example:
-
-```
-atacr_clean_spectra --start=2012-03-01 --end=2012-03-08 -O FN07A.pkl
-```
+> **Note**: If you don’t specify the options `--start` and `--end`, the object will be saved with a filename that corresponds to the entire deployment time of the station, but in fact the object contains the average spectra of all daily spectra available on disk, and not necessarily the average over the entire deployment time. We recommend using the `--start` and `--end` options if you want to produce time-limited spectral averages (e.g., an average per week or per month, etc.). For example:
+> ```
+> atacr_clean_spectra --start=2012-03-01 --end=2012-03-08 -O FN07A.pkl
+> ```
 
 This step produces all the cross-spectral quantities of interest across all possible (or useful) component pairs. Those are used in the subsequent analysis to produce the transfer functions used to correct the vertical component waveforms.
 
@@ -100,7 +112,7 @@ atacr_transfer_functions -O --figTF FN07A.pkl
 
 Now we need to download the earthquake data, for which we wish to clean the vertical component using the transfer functions just calculated. This script `atacr_download_event` is very similar to `atacr_download_data`, with the addition of the Event and Geometry Settings.
 
-> Warning: Be careful with the Frequency Settings, as these values need to be exactly the same as those used in `atacr_download_data`, but won’t be checked against.
+> **Warning**: Be careful with the Frequency Settings, as these values need to be exactly the same as those used in `atacr_download_data`, but won’t be checked against.
 
 To download the seismograms that recorded the March 9, 2012, magnitude 6.6 Vanuatu earthquake (be conservative with the options), type in a terminal:
 
@@ -109,6 +121,15 @@ atacr_download_event --min-mag=6.3 --max-mag=6.7 --start=2012-03-08 --end=2012-0
 ```
 
 The data are stored as an `EventStream` object, saved to disk in the newly created folder EVENTS/7D.FN07A/.
+
+<span style="color:blue">
+> **Local data**
+>
+> Once again, to use the ELVES data, we need to specify a few more options. First, use the `--server=` and `--user-auth` options to get waveform data. Second, use the `-zcomp=3` option. Finally, we don't have a pressure channel, so we specify `--channels='12'` to perform tilt corrections only. For example,
+> ```
+> atacr_download_event --server=http://seiscomp.geo.vuw.ac.nz --user-auth='xxxx:xxxx' --min-mag=6.6 --max-mag=8.0 --start=2024-01-08 --end=2024-01-10 --zcomp='3' --channels='12' --sampling-rate=1. EL23A.pkl
+> ```
+</span>
 
 ### Correct/clean earthquake data
 

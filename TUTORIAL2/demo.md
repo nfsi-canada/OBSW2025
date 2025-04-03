@@ -34,7 +34,7 @@ orientation using OrientPy.
 
 > **Local data**
 >
-> For those working on data sets located on the local server, use the `--server=` option, for example:
+> For those working on data sets located on the local server, use the `--server=` option. For the ELVES data, the channels are defined as `CH[1-3]`, so we specify this as well, for example:
 > ```
 > query_fdsn_stdb --server=http://seiscomp.geo.vuw.ac.nz -N 3O -S EL23A -C 'CH*' EL23A
 > ```
@@ -57,7 +57,7 @@ You will notice that a folder called BNG_RESULTS/7D.FN07A/ has been created. Thi
 >
 > Use the `--server-wf=` option to get waveform data. For the NFSI data that contain 1,2,3 components, use the `-zcomp=3` option. For example,
 > ```
-> bng_calc_auto --server-wf=http://seiscomp.geo.vuw.ac.nz --user-auth='guest:guest' --times=-5.,15. --window=60. --bp=0.04,0.1 --min-mag=6. --min-dist=30. --zcomp=3 EL23A.pkl
+> bng_calc_auto --server-wf=http://seiscomp.geo.vuw.ac.nz --user-auth='xxxx:xxxx' --times=-5.,15. --window=60. --bp=0.04,0.1 --min-mag=6. --min-dist=30. --zcomp=3 EL23A.pkl
 > ```
 
 #### Averaging
@@ -92,7 +92,7 @@ You will notice that a folder called DL_RESULTS/7D.FN07A/ has been created. This
 >
 > Use the `--server-wf=` option to get waveform data. For the NFSI data that contain 1,2,3 components, use the `-zcomp=3` option. For example,
 > ```
-> dl_calc --server-wf=http://seiscomp.geo.vuw.ac.nz --user-auth='guest:guest' --min-mag=7. --max-dep=30. --zcomp=3 EL23A.pkl
+> dl_calc --server-wf=http://seiscomp.geo.vuw.ac.nz --user-auth='xxxx:xxxx' --min-mag=7. --max-dep=30. --zcomp=3 EL23A.pkl
 > ```
 
 #### Averaging
