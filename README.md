@@ -15,7 +15,7 @@
 
 #### StDb
 
-StDb is a package containing tools for building a database of station information from geophysical observatories. The code is used through command-line scripts and include several options for querying an online FDSN archive, list the content of an existing station database, merge existing databases, and manually append or edit station information (e.g., for stations not hosted on any FDSN archive). The resulting station dictionary is used in various seismic applications covered in this workshop, such as `OrientPy`, `OBStools` and `RfPy`.
+StDb is a package containing tools for building a database of station information from geophysical observatories. The code is used through command-line scripts and include several options for querying an online FDSN archive, list the content of an existing station database, merge existing databases, and manually append or edit station information (e.g., for stations not hosted on any FDSN archive). The resulting station dictionary is used in various seismic applications covered in this workshop, such as OrientPy, OBStools and RfPy.
 
 - Git repository: https://github.com/schaefferaj/StDb
 
@@ -23,7 +23,7 @@ StDb is a package containing tools for building a database of station informatio
 
 #### OrientPy
 
-`OrientPy` is a toolbox to help determine seismometer orientation (i.e., azimuth of horizontal components) using automated or manual processing of earthquake data. These methods are particularly useful for broadband ocean-bottom seismograph (OBS) stations, but are also applicable to broadband land stations or shorter period instruments (depending on the method selected). 
+OrientPy is a toolbox to help determine seismometer orientation (i.e., azimuth of horizontal components) using automated or manual processing of earthquake data. These methods are particularly useful for broadband ocean-bottom seismograph (OBS) stations, but are also applicable to broadband land stations or shorter period instruments (depending on the method selected). 
 
 - Git repository: https://github.com/nfsi-canada/OrientPy
 
@@ -31,7 +31,7 @@ StDb is a package containing tools for building a database of station informatio
 
 #### OBStools
 
-`OBStools` is a package containing tools for processing data from broadband ocean-bottom seismograph (OBS) stations. Current functionalities include removing vertical-component noise from tilt and compliance effects, and calculating seafloor compliance. 
+OBStools is a package containing tools for processing data from broadband ocean-bottom seismograph (OBS) stations. Current functionalities include removing vertical-component noise from tilt and compliance effects, and calculating seafloor compliance. 
 
 - Git repository: https://github.com/nfsi-canada/OBStools
 
@@ -39,7 +39,7 @@ StDb is a package containing tools for building a database of station informatio
 
 #### RfPy 
 
-`RfPy` is a software to calculate single event-station receiver functions from the spectral deconvolution technique. Methods are available to post-process the receiver function data to calculate H-k stacks, back-azimuth harmonics and common-conversion-point (CCP) imaging. 
+RfPy is a software to calculate single event-station receiver functions from the spectral deconvolution technique. Methods are available to post-process the receiver function data to calculate H-k stacks, back-azimuth harmonics and common-conversion-point (CCP) imaging. 
 
 - Git repository: https://github.com/paudetseis/RfPy
 
@@ -47,7 +47,7 @@ StDb is a package containing tools for building a database of station informatio
 
 #### Telewavesim
 
-`Telewavesim` contains Python and Fortran modules to synthesize teleseismic body-wave propagation through stacks of generally anisotropic and strictly horizontal layers using a matrix propagator approach. The code also properly models reverberations from an overlying column of water, effectively simulating recordings from ocean-bottom seismograph (OBS) stations. The code can be used in a variety of teleseismic receiver-based studies, such as receiver functions, long-period P-wave polarization, shear-wave splitting from core-refracted shear waves (i.e., SKS, SKKS), etc. 
+Telewavesim contains Python and Fortran modules to synthesize teleseismic body-wave propagation through stacks of generally anisotropic and strictly horizontal layers using a matrix propagator approach. The code also properly models reverberations from an overlying column of water, effectively simulating recordings from ocean-bottom seismograph (OBS) stations. The code can be used in a variety of teleseismic receiver-based studies, such as receiver functions, long-period P-wave polarization, shear-wave splitting from core-refracted shear waves (i.e., SKS, SKKS), etc. 
 
 - Git repository: https://github.com/paudetseis/Telewavesim
 
@@ -55,7 +55,7 @@ StDb is a package containing tools for building a database of station informatio
 
 #### SeisBench
 
-`SeisBench` is an open-source python toolbox for machine learning in seismology. It provides a unified API for applying deep learning models to seismic waveforms, and for accessing and training machine learning algorithms on seismic datasets. SeisBench has been built to alleviate traditional bottlenecks when applying machine learning techniques to seismic data, in particular the steps of data preparation, collection and labelling.
+SeisBench is an open-source python toolbox for machine learning in seismology. It provides a unified API for applying deep learning models to seismic waveforms, and for accessing and training machine learning algorithms on seismic datasets. SeisBench has been built to alleviate traditional bottlenecks when applying machine learning techniques to seismic data, in particular the steps of data preparation, collection and labelling.
 
 - Git repository: https://github.com/seisbench/seisbench/tree/main
 
@@ -64,13 +64,13 @@ StDb is a package containing tools for building a database of station informatio
 #### GaMMA
 
 
-GaMMA is an earthquake phase associator using a Bayesian Gaussian mixture model. It is designed to work with `SeisBench` and can be used to automatically build earthquake catalogues from raw waveforms using a Deep Learning picker.
+GaMMA is an earthquake phase associator using a Bayesian Gaussian mixture model. It is designed to work with SeisBench and can be used to automatically build earthquake catalogues from raw waveforms using a Deep Learning picker.
 
 - Git repository and Documentation: https://github.com/AI4EPS/GaMMA
 
 #### PyOcto
 
-PyOcto is a high-throughput seismic phase associator using the octotree structure for parameter search. It is designed to work with `SeisBench` and can be used to automatically build earthquake catalogues from raw waveforms using a Deep Learning picker.
+PyOcto is a high-throughput seismic phase associator using the octotree structure for parameter search. It is designed to work with SeisBench and can be used to automatically build earthquake catalogues from raw waveforms using a Deep Learning picker.
 
 - Git repository: https://github.com/yetinam/pyocto
 
@@ -104,7 +104,7 @@ Now you're ready to install the required packages used in the workshop. You migh
 
 ##### 1) User mode: Installing wheels from the master branch on the GitHub repositories and PyPI:
 
-> Note: Follow this sequence ***exactly*** (with `Telewavesim` installed first) to avoid version conflicts
+> Note: Follow this sequence ***exactly*** (with Telewavesim installed first) to avoid version conflicts
 
 ```bash
 pip install telewavesim
@@ -142,14 +142,14 @@ pip install -e OBStools/.
 pip install -e RfPy/.
 ```
 
-- We then install `SeisBench` from PyPI (unless you want to contribute to those packages too!)
+- We then install SeisBench from PyPI (unless you want to contribute to those packages too!)
 
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 pip install seisbench
 ```
 
-- And finally, `GaMMA` from the GitHub repository and `PyOcto` from PyPI
+- And finally, GaMMA from the GitHub repository and PyOcto from PyPI
 
 ```bash
 pip install git+https://github.com/wayneweiqiang/GaMMA.git
@@ -165,7 +165,7 @@ git clone https://github.com/nfsi-canada/OBSW2025.git
 cd OBSW2025
 ```
 
-The `TUTORIAL[1-6]` folders should now be on your computer and you are ready to start the demonstrations.
+The TUTORIAL[1-6] folders should now be on your computer and you are ready to start the demonstrations.
 
 ### Testing your installation
 
