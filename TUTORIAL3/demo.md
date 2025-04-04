@@ -3,7 +3,7 @@
 In this demonstration we will show how to calculate and apply tilt and compliance corrections for station
 [7D.FN07A](https://ds.iris.edu/gmap/#network=7D&station=FN07A&planet=earth) from the Cascadia Initiative.
 
-First, ensure the `Conda` environment is activated:
+First, ensure the Conda environment is activated:
 
 ```
 conda activate obsw25

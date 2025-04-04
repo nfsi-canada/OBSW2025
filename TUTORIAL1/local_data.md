@@ -8,7 +8,7 @@ from obspy.clients.fdsn import Client
 client = Client('IRIS')
 ```
 
-In `ObsPy`, one can either specify a key string that points to a public archive or use the corresponding URL. For instance, the two "clients" below are identical and point to the same archive:
+In ObsPy, one can either specify a key string that points to a public archive or use the corresponding URL. For instance, the two "clients" below are identical and point to the same archive:
 
 ```
 client1 = Client('GEONET')
@@ -29,9 +29,9 @@ cat = client.get_events(...)
 stream = client.get_waveforms(...)
 ```
 
-### FDSN web services for local data with `SeisComP`
+### FDSN web services for local data with SeisComP
 
-Oftentimes, the dataset we wish to use is not available publicly and only exists on a local (maybe external) computer drive. Due to the many different ways the data can be formatted and sorted, adapting every codes to be as flexible as possible is a huge task. Instead, it is possible to (re)format the data in a structured way that is coherent with the way FDSN services access the data on remote archives, and run `SeisComP` locally to enable FDSN web services on the same computer on a local port (e.g., http://localhost:8080), such that we can use the usual `ObsPy` "client":
+Oftentimes, the dataset we wish to use is not available publicly and only exists on a local (maybe external) computer drive. Due to the many different ways the data can be formatted and sorted, adapting every codes to be as flexible as possible is a huge task. Instead, it is possible to (re)format the data in a structured way that is coherent with the way FDSN services access the data on remote archives, and run SeisComP locally to enable FDSN web services on the same computer on a local port (e.g., http://localhost:8080), such that we can use the usual ObsPy "client":
 
 ```
 client = Client(base_url='http://localhost:8080')
@@ -39,15 +39,15 @@ client = Client(base_url='http://localhost:8080')
 client.get_stations(...)
 ```
 
-`SeisComP` is already installed on one of the geophysics servers in room CO-501, such that anyone with properly formatted seismic data will be able to load it into `SeisComP` and use the FDSN web services for their data set.
+SeisComP is already installed on one of the geophysics servers at VUW, such that anyone with properly formatted seismic data will be able to load it into SeisComP and use the FDSN web services for their data set.
 
 ### Formatting the seismic data archive
 
-To enable the FDSN web services and load local data sets, `SeisComP` uses the station XML standard for station metadata and the "SeisComP Data Structure" (SDS) for archiving miniSEED waveform data. 
+To enable the FDSN web services and load local data sets, SeisComP uses the station XML standard for station metadata and the "SeisComP Data Structure" (SDS) for archiving miniSEED waveform data. 
 
 #### Station XML
 
-The metadata should be formatted as a [stationXML](https://www.fdsn.org/xml/station/). The corresponding `ObsPy` documentation is [here](https://docs.obspy.org/packages/obspy.core.inventory.html). If you don't have a station `.xml` file but you have a dataless SEED file, you can convert it to `.xml` using [this tools](https://seiscode.iris.washington.edu/projects/stationxml-converter).
+The metadata should be formatted as a [stationXML](https://www.fdsn.org/xml/station/). The corresponding ObsPy documentation is [here](https://docs.obspy.org/packages/obspy.core.inventory.html). If you don't have a station `.xml` file but you have a dataless SEED file, you can convert it to `.xml` using [this tools](https://seiscode.iris.washington.edu/projects/stationxml-converter).
 
 #### Waveform (`.mseed`) data
 
@@ -92,7 +92,7 @@ If you are not sure of your setup, please send us a smaller copy (subset of data
 
 ### Working with ELVES data
 
-The ELVES data will be available via an FDSN web service set up for the workshop through `SeisComP`. To access the data, you will need to be connected to the local domain (geo.vuw.ac.nz) and use the full URL that points to the `SeisComP` server, as well as a user name and password. In a Python environment, you can access the ELVES data using the `ObsPy` tools by specifying
+The ELVES data will be available via an FDSN web service set up for the workshop through SeisComP. To access the data, you will need to be connected to the local domain (geo.vuw.ac.nz) and use the full URL that points to the SeisComP server, as well as a user name and password. In a Python environment, you can access the ELVES data using the ObsPy tools by specifying
 
 ```
 client = Client(base_url='http://seiscomp.geo.vuw.ac.nz', user='xxxx', password='xxxx')

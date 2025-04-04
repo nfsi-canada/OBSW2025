@@ -8,7 +8,7 @@ calibrate our results (see [here](https://obsic.whoi.edu/wp-content/uploads/site
 (Audet, GJI, 2016), so this will provide an example of an end-to-end workflow for this
 type of analysis.
 
-First, ensure the `Conda` environment is activated:
+First, ensure the Conda environment is activated:
 
 ```
 conda activate obsw25
@@ -22,7 +22,7 @@ Simply type in the terminal:
 query_fdsn_stdb -N 7D -S FN07A FN07A
 ```
 
-> **Note**: The duplicate `FN07A` is not a typo. The first one is the value of the option `-S`, whereas the second one is the filename (no extension) we want to use.
+> **Note**: The duplicate `FN07A` is not a typo. The first instance is the value of the option `-S`, whereas the second one is the filename (no extension) we want to use.
 
 This command will extract the metadata and store it in the StDb file `FN07A.pkl`. You can also
 check the content of the database:
