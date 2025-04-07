@@ -91,4 +91,6 @@ Now let’s make a plot of all receiver functions, this time sorted by slowness 
 rfpy_plot --snr=5 --bp=0.1,0.5 --nslow=40 --normalize --stack --trange=0.,20. FN07A.pkl
 ```
 
+#### Save RFs to disk
 
+The previous commands only create the RF figures and perhaps saves them to disk (e.g., `--save-fig='figname.png`). We can also save the RFs that went into creating the figure with the option `--save-rfs='folder_name'`, where you can choose a folder name that suits you. If you select both `--save-fig` and `--save-rfs`, the figure and RFs will be saved in the same `'folder_name'` folder; if only `--save-rfs` is specified, only the RFs will be saved. This folder will then contain the stacked (over all back-azimuths and slowness values) and binned (into back-azimuth or slowness bins) radial and transverse receiver functions as SAC files. It will also contain a `.csv` file containing the (baz, slow) pairs that the RFs represent. It also contains a hidden `.proc.json` file containing the command-line arguments that were specified when calling `rfpy_plot`, so you know how each figure was created. This will be useful in the next tutorial.
