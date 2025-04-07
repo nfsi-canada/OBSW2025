@@ -1,13 +1,17 @@
 ## 2025 Ocean-Bottom Seismology Training Workshop
 
 
-**Instructor**: [Pascal Audet](https://www.uogeophysics.com/authors/admin/)
+**Organizers**: [Pascal Audet](https://www.uogeophysics.com/authors/admin/) and [Martha Savage](https://people.wgtn.ac.nz/martha.savage)
 
-**When**: April 14-16, 2025, 9:00 AM to 4:30 PM (NZST) 
+**Instructor**: Pascal Audet
+
+**When**: April 14-16, 2025, 8:30 AM to 4:30 PM (NZST) 
 
 **Where**: Room 501 in the Cotton building, Victoria University of Wellington
 
 **What**: This workshop will cover training in seismological methods and software for broadband OBS data analysis encompassing three broad themes: 1) Seismograph orientation and data cleaning, 2) Subsurface seismic velocity structure, and 3) Earthquake detection and location. The format of the workshop will include short lectures and extensive hands-on practice to process broadband ocean-bottom seismic data using various open-source Python software packages.  
+
+**Program**: [PDF](PROGRAM/OBSW2025_Draft_Program.pdf)
 
 ---
 
