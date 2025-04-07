@@ -107,7 +107,7 @@ Now you're ready to install the required packages used in the workshop. You migh
 > Note: Follow this sequence ***exactly*** (with Telewavesim installed first) to avoid version conflicts
 
 ```bash
-pip install telewavesim
+pip install telewavesim@git+https://github.com/paudetseis/telewavesim
 pip install stdb@git+https://github.com/schaefferaj/stdb
 pip install obstools@git+https://github.com/nfsi-canada/obstools
 pip install rfpy@git+https://github.com/paudetseis/rfpy
