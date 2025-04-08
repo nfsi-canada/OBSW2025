@@ -202,3 +202,23 @@ Then type:
 
 If nothing happens, you're good to go! If you run into a problem, let us know by [raising an issue](https://github.com/nfsi-canada/OBSW2025/issues). 
 
+### Conda environment for GaMMA
+
+Testing of workshop material for Linux workstations in CO-501 has shown instabilities with the GaMMA installation and failures to run the jupyter notebook correctly under the `obsw25` environment (TUTORIAL6/notebook2_catalogue_gamma.ipynb). This problem does not occur for the same environment in macOS.
+
+To circumvent this problem, it is possible to create a separate Conda environment specifically for GaMMA and run the `jupyter notebook` in this environment:
+
+```bash
+conda create -n gamma -c conda-forge python=3.12 jupyter
+conda activate gamma
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install seisbench
+pip install git+https://github.com/wayneweiqiang/GaMMA.git
+```
+
+Then, activate the environment and run `jupyter notebook` specifically for TUTORIAL6/notebook2_catalogue_gamma.ipynb:
+
+```bash
+conda activate gamma
+jupyter notebook
+```
