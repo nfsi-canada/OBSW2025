@@ -2,5 +2,5 @@
 __pycache__
 *.egg-info
 .ipynb*
-TUTORIALS/TUTORIAL[1-6]/*.pdf
-LECTURES/*.pdf
+# TUTORIALS/TUTORIAL[1-6]/*.pdf
+# LECTURES/*.pdf
